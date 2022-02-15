@@ -21,14 +21,14 @@ function launchModal() {
 }
 
 
-let firstName = document.getElementById("first").value;
-let lastName = document.getElementById("last").value;
-let email = document.getElementById("email").value;
-let birthdate = document.getElementById("birthdate").value;
-let quantity = document.getElementById("quantity").value;
-
 // Fonction vérifie les chaps du formulaire
 function validate() {
+  let firstName = document.getElementById("first").value;
+  let lastName = document.getElementById("last").value;
+  let email = document.getElementById("email").value;
+  let birthdate = document.getElementById("birthdate").value;
+  let quantity = document.getElementById("quantity").value;
+
   alert(firstName);
   console.log(lastName.value);
   console.log(email);
