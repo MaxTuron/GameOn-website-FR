@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
+const form = document.getElementsByName('reserve');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -27,19 +28,27 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+//Empeche l'envoie du formulaire
+form[0].addEventListener('submit', (e) => {
+  e.preventDefault();
+});
 
-// Fonction vérifie les chaps du formulaire
+// Fonction vérifie les champs du formulaire
 function validate() {
+
   let firstName = document.getElementById("first").value,
       lastName = document.getElementById("last").value,
       email = document.getElementById("email").value,
       birthdate = document.getElementById("birthdate").value,
       quantity = document.getElementById("quantity").value,
-      cityCollection = document.getElementsByName("location"),
       firstRegex = /[0-9]/.test(firstName),
       lastRegex = /[0-9]/.test(lastName),
       emailRegex = /@/.test(email),
       quantityRegex = /\d/.test(quantity);
+
+  let firstNameError = document.getElementById("firstNameError"),
+      lastNameError = document.getElementById("lastNameError"),
+      emailError = document.getElementById("emailError");
 
   let firstNameValid = false,
       lastNameValid = false,
@@ -49,32 +58,32 @@ function validate() {
       checkboxValid = false;
 
 //Gestion du prénom
-  if(firstName.length<2){
-    alert("Le prénom doit faire plus de deux caractères.");
-  }else if (firstName==="") {
-    alert("Le prénom ne doit pas être vide.");
+  if(firstName.length<2 && firstName.length !== 0 ){
+    firstNameError.innerHTML = "Votre prénom doit avoir plus de deux lettres.";
+  }else if (firstName.length===0) {
+    firstNameError.innerHTML = "Vous devez écrire votre prénom.";
   }else if(firstRegex===true){
-    alert("Le prenom ne doit pas contenir de nombres.");
+    firstNameError.innerHTML = "Le prénom ne doit pas contenir de nombres.";
   }else{
     firstNameValid = true;
   }
 
 //Gestion du nom
-  if(lastName.length<2){
-    alert("Le nom doit faire plus de deux caractères.");
+  if(lastName.length<2 && lastName.length !== 0){
+    lastNameError.innerHTML = "Votre nom doit avoir plus de deux lettres.";
   }else if (lastName==="") {
-    alert("Le nom ne doit pas être vide.");
+    lastNameError.innerHTML = "Vous devez écrire votre nom.";
   }else if(lastRegex===true){
-    alert("Le nom ne doit pas contenir de nombres.");
+    lastNameError.innerHTML = "Le nom ne doit pas contenir de nombres.";
   }else{
     lastNameValid = true;
   }
 
 //Gestion de l'email
   if (email==="") {
-    alert("L'email ne doit pas être vide.");
+    emailError.innerHTML = "Vous devez remplir ce champ.";
   }else if(emailRegex===false){
-    alert("Le format de l'adresse Email n'est pas valide");
+    emailError.innerHTML = "Vous devez remplir une adresse email valide.";
   }else{
     emailValid = true;
   }
@@ -95,21 +104,18 @@ function validate() {
     quantityValid = true;
   }
 
-//Gestion des villes
 
-//Vérification condition d'utilisation checked
-    if (document.getElementById('checkbox1').checked) {
-      checkboxValid = true;
-    }else{
-      alert ('Veuillez cocher la case des conditions d\'utilisations pour vous inscrire');
-    }
-
-  //Verification finale de tous les champs
-  if(firstNameValid===true && lastNameValid===true && emailValid===true && birthdateValid===true && quantityValid===true && checkboxValid===true){
-    alert("Form OK"),
-    closeModal();
+  //Vérification condition d'utilisation checked
+  if (document.getElementById('checkbox1').checked) {
+    checkboxValid = true;
   }else{
-    alert("Erreur")
+    alert ('Veuillez cocher la case des conditions d\'utilisations pour vous inscrire');
+  }
+
+    //Verification finale de tous les champs
+  if(firstNameValid && lastNameValid && emailValid && birthdateValid && quantityValid && checkboxValid){
+    document.querySelector(".modal-body").style.display = "none";
+    document.querySelector(".confirm").style.display = "block";
   }
 }
 

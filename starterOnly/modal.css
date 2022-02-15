@@ -30,6 +30,12 @@ img {
   padding-right: 1rem;
 }
 
+.confirm{
+  padding: 3rem 8%;
+  margin: 15px auto;
+  display: none;
+}
+
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -323,7 +329,8 @@ input[data-error]::after {
 }
 .btn-submit,
 .btn-signup,
-.btn-reset{
+.btn-reset,
+.btn-retour{
   background: #fe142f;
   display: block;
   margin:0 auto 10px auto;
