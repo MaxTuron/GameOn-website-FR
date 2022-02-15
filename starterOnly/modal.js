@@ -48,7 +48,9 @@ function validate() {
 
   let firstNameError = document.getElementById("firstNameError"),
       lastNameError = document.getElementById("lastNameError"),
-      emailError = document.getElementById("emailError");
+      emailError = document.getElementById("emailError"),
+      birthdateError = document.getElementById("birthdateError"),
+      quantityError = document.getElementById("quantityError");
 
   let firstNameValid = false,
       lastNameValid = false,
@@ -90,16 +92,16 @@ function validate() {
 
   //Gestion de la date de naissance
   if (birthdate==="") {
-    alert("La date de naissance ne doit pas être vide.");
+    birthdateError.innerHTML = "Vous devez remplir votre date de naissance.";
   }else {
     birthdateValid = true;
   }
 
   //Gestion de la quantité de concours
   if (quantity==="") {
-    alert("Le nombre de concours ne doit pas être vide.");
+    quantityError.innerHTML = "Vous devez remplir le nombre de tournois.";
   }else if(quantityRegex===false){
-    alert("Un nombre doit être saisi.");
+    quantityError.innerHTML = "Un nombre doit être saisi.";
   }else {
     quantityValid = true;
   }
