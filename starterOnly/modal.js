@@ -21,3 +21,24 @@ function launchModal() {
 }
 
 
+let firstName = document.getElementById("first").value;
+let lastName = document.getElementById("last").value;
+let email = document.getElementById("email").value;
+let birthdate = document.getElementById("birthdate").value;
+let quantity = document.getElementById("quantity").value;
+
+// Fonction vérifie les chaps du formulaire
+function validate() {
+  alert(firstName);
+  console.log(lastName.value);
+  console.log(email);
+  console.log(birthdate);
+  console.log(quantity);
+
+}
+
+//Fonction pour réinitialiser le formulaire
+function reset() {
+  document.getElementById("form").reset();
+}
+
