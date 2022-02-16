@@ -9,6 +9,7 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalmessage = document.querySelector(".confirm");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
@@ -26,6 +27,11 @@ function launchModal() {
 //Close modal
 function closeModal() {
   modalbg.style.display = "none";
+  modalmessage.style.display = "none";
+}
+
+function modalMessageLaunch(){
+  modalmessage.style.display = "block";
 }
 
 //Empeche l'envoie du formulaire
@@ -36,6 +42,7 @@ form[0].addEventListener('submit', (e) => {
 // Fonction vérifie les champs du formulaire
 function validate() {
 
+  //Déclaration et récupération des variables et des regex
   let firstName = document.getElementById("first").value,
       lastName = document.getElementById("last").value,
       email = document.getElementById("email").value,
@@ -46,12 +53,15 @@ function validate() {
       emailRegex = /@/.test(email),
       quantityRegex = /\d/.test(quantity);
 
+  //Déclaration des messages d'erreurs
   let firstNameError = document.getElementById("firstNameError"),
       lastNameError = document.getElementById("lastNameError"),
       emailError = document.getElementById("emailError"),
       birthdateError = document.getElementById("birthdateError"),
-      quantityError = document.getElementById("quantityError");
+      quantityError = document.getElementById("quantityError"),
+      checkboxError = document.getElementById("checkboxError");
 
+  //Déclaration des variables pour la validation finale des champs
   let firstNameValid = false,
       lastNameValid = false,
       emailValid = false,
@@ -61,24 +71,26 @@ function validate() {
 
 //Gestion du prénom
   if(firstName.length<2 && firstName.length !== 0 ){
-    firstNameError.innerHTML = "Votre prénom doit avoir plus de deux lettres.";
+    firstNameError.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
   }else if (firstName.length===0) {
     firstNameError.innerHTML = "Vous devez écrire votre prénom.";
   }else if(firstRegex===true){
     firstNameError.innerHTML = "Le prénom ne doit pas contenir de nombres.";
   }else{
     firstNameValid = true;
+    firstNameError.innerHTML = "";
   }
 
 //Gestion du nom
   if(lastName.length<2 && lastName.length !== 0){
-    lastNameError.innerHTML = "Votre nom doit avoir plus de deux lettres.";
+    lastNameError.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
   }else if (lastName==="") {
     lastNameError.innerHTML = "Vous devez écrire votre nom.";
   }else if(lastRegex===true){
     lastNameError.innerHTML = "Le nom ne doit pas contenir de nombres.";
   }else{
     lastNameValid = true;
+    lastNameError.innerHTML = "";
   }
 
 //Gestion de l'email
@@ -88,13 +100,15 @@ function validate() {
     emailError.innerHTML = "Vous devez remplir une adresse email valide.";
   }else{
     emailValid = true;
+    emailError.innerHTML = "";
   }
 
   //Gestion de la date de naissance
   if (birthdate==="") {
-    birthdateError.innerHTML = "Vous devez remplir votre date de naissance.";
+    birthdateError.innerHTML = "Vous devez entrer votre date de naissance.";
   }else {
     birthdateValid = true;
+    birthdateError.innerHTML = "";
   }
 
   //Gestion de la quantité de concours
@@ -104,20 +118,22 @@ function validate() {
     quantityError.innerHTML = "Un nombre doit être saisi.";
   }else {
     quantityValid = true;
+    quantityError.innerHTML = "";
   }
 
 
   //Vérification condition d'utilisation checked
   if (document.getElementById('checkbox1').checked) {
     checkboxValid = true;
+    checkboxError.innerHTML = "";
   }else{
-    alert ('Veuillez cocher la case des conditions d\'utilisations pour vous inscrire');
+    checkboxError.innerHTML = "Vous devez vérifier que vous acceptez les termes et conditions.";
   }
 
     //Verification finale de tous les champs
   if(firstNameValid && lastNameValid && emailValid && birthdateValid && quantityValid && checkboxValid){
-    document.querySelector(".modal-body").style.display = "none";
-    document.querySelector(".confirm").style.display = "block";
+    closeModal();
+    modalMessageLaunch();
   }
 }
 
