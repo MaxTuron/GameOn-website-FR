@@ -59,6 +59,7 @@ function validate() {
       emailError = document.getElementById("emailError"),
       birthdateError = document.getElementById("birthdateError"),
       quantityError = document.getElementById("quantityError"),
+      cityError = document.getElementById("cityError"),
       checkboxError = document.getElementById("checkboxError");
 
   //Déclaration des variables pour la validation finale des champs
@@ -67,6 +68,7 @@ function validate() {
       emailValid = false,
       birthdateValid = false,
       quantityValid = false,
+      cityValid = false,
       checkboxValid = false;
 
 //Gestion du prénom
@@ -121,6 +123,14 @@ function validate() {
     quantityError.innerHTML = "";
   }
 
+  // Vérification du champ CHOIX DE VILLES
+  if (document.querySelectorAll('[name="location"]:checked').length < 1) {
+    cityError.innerHTML = "Vous devez préciser dans quelle ville etait ces évènements.";
+  } else {
+    cityValid = true;
+    cityError.innerHTML = "";
+  }
+
 
   //Vérification condition d'utilisation checked
   if (document.getElementById('checkbox1').checked) {
@@ -131,7 +141,7 @@ function validate() {
   }
 
     //Verification finale de tous les champs
-  if(firstNameValid && lastNameValid && emailValid && birthdateValid && quantityValid && checkboxValid){
+  if(firstNameValid && lastNameValid && emailValid && birthdateValid && quantityValid && cityValid && checkboxValid){
     closeModal();
     modalMessageLaunch();
     reset();
