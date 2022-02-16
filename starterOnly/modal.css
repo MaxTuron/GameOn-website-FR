@@ -37,6 +37,7 @@ img {
 /*Messages d'erreurs */
 .error{
   color: red;
+  font-size: small;
 }
 
 .topnav {

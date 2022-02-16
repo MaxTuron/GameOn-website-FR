@@ -134,6 +134,7 @@ function validate() {
   if(firstNameValid && lastNameValid && emailValid && birthdateValid && quantityValid && checkboxValid){
     closeModal();
     modalMessageLaunch();
+    reset();
   }
 }
 
