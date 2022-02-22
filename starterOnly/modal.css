@@ -309,7 +309,6 @@ input[data-error]::after {
 .close {
   position: absolute;
   right: 15px;
-  top: 15px;
   width: 32px;
   height: 32px;
   opacity: 1;
@@ -494,11 +493,13 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    overflow: inherit;
   }
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: auto;
   }
   .hero-content::after {
     content: unset;
@@ -509,10 +510,12 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    margin-left: -25px;
   }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    margin-left: -25px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -526,6 +529,14 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .hero-text {
+    width: 314px;
+    font-size: 1.5rem;
+    margin-left: -25px;
   }
 }
 

@@ -30,6 +30,7 @@ function closeModal() {
   modalmessage.style.display = "none";
 }
 
+//Affiche le message de confirmation
 function modalMessageLaunch(){
   modalmessage.style.display = "block";
 }
