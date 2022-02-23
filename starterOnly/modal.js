@@ -12,7 +12,6 @@ const modalbg = document.querySelector(".bground");
 const modalmessage = document.querySelector(".confirm");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.querySelectorAll(".close");
-const formData = document.querySelectorAll(".formData");
 const form = document.getElementsByName('reserve');
 
 // launch modal event
@@ -36,8 +35,8 @@ function modalMessageLaunch(){
 }
 
 //Empeche l'envoie du formulaire
-form[0].addEventListener('submit', (e) => {
-  e.preventDefault();
+form[0].addEventListener('submit', function(event){
+  event.preventDefault()
 });
 
 // Fonction vérifie les champs du formulaire
