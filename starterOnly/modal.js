@@ -42,6 +42,12 @@ form.addEventListener('submit', function(event){
 // Fonction vérifie les champs du formulaire
 function validate() {
 
+  let inputFirstName = document.getElementById("first"),
+      inputLastName = document.getElementById("last"),
+      inputEmail = document.getElementById("email"),
+      inputBirthdate = document.getElementById("birthdate"),
+      inputQuantity = document.getElementById("quantity");
+
   //Déclaration et récupération des variables et des regex
   let firstName = document.getElementById("first").value,
       lastName = document.getElementById("last").value,
@@ -74,53 +80,69 @@ function validate() {
 //Gestion du prénom
   if(firstName.length<2 && firstName.length !== 0 ){
     firstNameError.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+    inputFirstName.className = "text-control-border";
   }else if (firstName.length===0) {
     firstNameError.innerHTML = "Vous devez écrire votre prénom.";
+    inputFirstName.className = "text-control-border";
   }else if(firstRegex===true){
     firstNameError.innerHTML = "Le prénom ne doit pas contenir de nombres.";
+    inputFirstName.className = "text-control-border";
   }else{
     firstNameValid = true;
     firstNameError.innerHTML = "";
+    inputFirstName.className = "text-control";
   }
 
 //Gestion du nom
   if(lastName.length<2 && lastName.length !== 0){
     lastNameError.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    inputLastName.className = "text-control-border";
   }else if (lastName==="") {
     lastNameError.innerHTML = "Vous devez écrire votre nom.";
+    inputLastName.className = "text-control-border";
   }else if(lastRegex===true){
     lastNameError.innerHTML = "Le nom ne doit pas contenir de nombres.";
+    inputLastName.className = "text-control-border";
   }else{
     lastNameValid = true;
     lastNameError.innerHTML = "";
+    inputLastName.className = "text-control";
   }
 
 //Gestion de l'email
   if (email==="") {
     emailError.innerHTML = "Vous devez remplir ce champ.";
+    inputEmail.className = "text-control-border";
   }else if(emailRegex===false){
     emailError.innerHTML = "Vous devez remplir une adresse email valide.";
+    inputEmail.className = "text-control-border";
   }else{
     emailValid = true;
     emailError.innerHTML = "";
+    inputEmail.className = "text-control";
   }
 
   //Gestion de la date de naissance
   if (birthdate==="") {
     birthdateError.innerHTML = "Vous devez entrer votre date de naissance.";
+    inputBirthdate.className = "text-control-border";
   }else {
     birthdateValid = true;
     birthdateError.innerHTML = "";
+    inputBirthdate.className = "text-control";
   }
 
   //Gestion de la quantité de concours
   if (quantity==="") {
     quantityError.innerHTML = "Vous devez remplir le nombre de tournois.";
+    inputQuantity.className = "text-control-border";
   }else if(quantityRegex===false){
     quantityError.innerHTML = "Un nombre doit être saisi.";
+    inputQuantity.className = "text-control-border";
   }else {
     quantityValid = true;
     quantityError.innerHTML = "";
+    inputQuantity.className = "text-control";
   }
 
   // Vérification du champ CHOIX DE VILLES
