@@ -193,6 +193,25 @@ main {
   padding-top: 10px;
 }
 
+.content_message {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  font-size: xxx-large;
+  align-items: center;
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -218,6 +237,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -234,9 +254,9 @@ input {
   opacity: 1;
 }
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  border: 5px solid #e54858;
 }
-/* 
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -314,7 +334,9 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  top: 10px;
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -333,7 +355,8 @@ input[data-error]::after {
 .btn-submit,
 .btn-signup,
 .btn-reset,
-.btn-retour{
+.btn-retour,
+.btn-close{
   background: #fe142f;
   display: block;
   margin:0 auto 10px auto;
@@ -344,6 +367,16 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-close{
+  position: absolute;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+  bottom: 10px;
+  font-size: xx-large;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;

@@ -11,8 +11,8 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalmessage = document.querySelector(".confirm");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const modalBtnClose = document.querySelectorAll(".close");
-const form = document.getElementsByName('reserve');
+const modalBtnClose = document.querySelectorAll(".close, .btn-close");
+const form = document.getElementById('form');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -35,7 +35,7 @@ function modalMessageLaunch(){
 }
 
 //Empeche l'envoie du formulaire
-form[0].addEventListener('submit', function(event){
+form.addEventListener('submit', function(event){
   event.preventDefault()
 });
 
@@ -148,7 +148,7 @@ function validate() {
   }
 }
 
-//Fonction pour réinitialiser le formulaire
+//Fonction pour réinitialiser le formulaire -- Optionnel
 function reset() {
   document.getElementById("form").reset();
 }
