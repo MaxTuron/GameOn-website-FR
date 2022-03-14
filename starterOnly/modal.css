@@ -36,7 +36,7 @@ img {
 }
 /*Messages d'erreurs */
 .error{
-  color: red;
+  color: #fe142f;
   font-size: small;
 }
 
@@ -245,7 +245,7 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
-  border: 5px solid red;
+  border: 3px solid #fe142f;
 }
 
 .formData[data-error]::after {
